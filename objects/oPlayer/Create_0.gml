@@ -4,3 +4,4 @@
 event_inherited();
 
 type = "player";
+testing = "player is poopy";
