@@ -37,7 +37,19 @@ if (myTurn)
 	//projectile firing
 	if (firingTimer >= firingDelay)
 	{
-		if(gridY
+		//this is the grid that this object will spawn/fire a bullet into
+		var firingGridX = gridX + bulletXDirection;
+		var firingGridY = gridY + bulletYDirection;
+		if(firingGridY >= 0 && firingGridY < mapHeight && map[# firingGridX, firingGridY].passable)
+		{
+			var bullet = instance_create_layer((firingGridX * GRID_SIZE) + sprite_width/2 , (firingGridY * GRID_SIZE) + sprite_height/2, "CharacterLayer", oSingleMoveBullet);
+			bullet.ySpeed = 1;
+			bullet.yDirection = bulletYDirection;
+			bullet.yMove = bullet.yDirection * bullet.ySpeed;
+			bullet.image_angle = bulletAngle;
+			bullet.gridX = firingGridX;
+			bullet.gridY = firingGridY;
+		}
 	}
 	
 	//tick up the firing timer
