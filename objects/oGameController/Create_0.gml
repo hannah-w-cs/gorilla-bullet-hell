@@ -1,5 +1,6 @@
 /// @description
 //set game controller variables
+randomize();
 state = "initializing";
 globalvar map, mapWidth, mapHeight; // this will hold all of our node ids
 

@@ -24,11 +24,13 @@ if (myFacing == "up")
 {
 	//add sprite index changes here
 	bulletYDirection = -1;
+	bulletAngle = 90;
 }
 else
 {
 	//sprite index goes here
 	bulletYDirection = 1;
+	bulletAngle = 270;
 }
 
 

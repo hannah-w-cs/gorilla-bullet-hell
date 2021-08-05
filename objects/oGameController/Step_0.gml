@@ -1,13 +1,16 @@
 //begginings of our state machine
 switch (state)
 {
+	case "map generation" :
+	
+		break;
 	case "initializing" :
 	// Doing all of this here so that this is done with each of the nodes after the terrain objects are created
 		with (oNode)
 		{
 				if (instance_position(x + sprite_width/2, y + sprite_height/2, oTerrainParent))
 			{
-				tempTerrain = instance_position(x + sprite_width/2, y + sprite_height/2, oTerrainParent);
+				var tempTerrain = instance_position(x + sprite_width/2, y + sprite_height/2, oTerrainParent);
 	
 					switch (tempTerrain.type)
 					{

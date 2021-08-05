@@ -50,6 +50,9 @@ if (myTurn)
 			bullet.gridX = firingGridX;
 			bullet.gridY = firingGridY;
 		}
+		
+		//reset firing timer
+		firingTimer = 0;
 	}
 	
 	//tick up the firing timer

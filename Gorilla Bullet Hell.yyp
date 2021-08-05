@@ -1,6 +1,7 @@
 {
   "resources": [
-    {"id":{"name":"sEnemy","path":"sprites/sEnemy/sEnemy.yy",},"order":0,},
+    {"id":{"name":"sEnemyVertical","path":"sprites/sEnemyVertical/sEnemyVertical.yy",},"order":1,},
+    {"id":{"name":"sEnemyHorizontal","path":"sprites/sEnemyHorizontal/sEnemyHorizontal.yy",},"order":0,},
     {"id":{"name":"sTree","path":"sprites/sTree/sTree.yy",},"order":1,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},"order":0,},
