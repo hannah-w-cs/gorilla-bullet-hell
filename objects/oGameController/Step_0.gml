@@ -96,9 +96,10 @@ switch (state)
 						alarmSet = true;
 					}
 				}
-				else
+				else if (alarmSet == false)
 				{
-					gameTurn = TURN_STATE.enemy;
+					alarm[1] = turnWaitTime * room_speed;
+					alarmSet = true;
 				}
 			
 				break;
@@ -128,9 +129,10 @@ switch (state)
 						alarmSet = true;
 					}
 				}
-				else
+				else if (alarmSet == false)
 				{
-					gameTurn = TURN_STATE.player;
+					alarm[2] = turnWaitTime * room_speed;
+					alarmSet = true;
 				}
 				
 				break;	

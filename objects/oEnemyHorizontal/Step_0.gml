@@ -11,7 +11,7 @@ if (myTurn)
 	
 	// now we flip around if it is not passable node.
 	// we do this here so it flips at edge of map first. The edge of map will not have a node in the ds_grid that can return as passable or not
-	if(!map[# gridX + xMove, gridY].passable)
+	if(!map[# gridX + xMove, gridY].passable || map[# gridX + xMove, gridY].occupant != noone)
 	{
 		xDirection = -xDirection;
 		xMove = xDirection * xSpeed;

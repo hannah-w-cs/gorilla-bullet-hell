@@ -4,15 +4,15 @@ randomize();
 state = "initializing";
 globalvar map, mapWidth, mapHeight; // this will hold all of our node ids
 
-mapWidth = 8; //lets us know how many tiles wide room is
-mapHeight = 8; //how many tiles high room is
+mapWidth = 16; //lets us know how many tiles wide room is
+mapHeight = 16; //how many tiles high room is
 
 map = ds_grid_create(mapWidth,mapHeight);
 
 //set the game turn
 gameTurn = TURN_STATE.player;
 alarmSet = false;
-turnWaitTime = 0.25; //this is how long in seconds after a turn occurs that another turn happens
+turnWaitTime = 0.5; //this is how long in seconds after a turn occurs that another turn happens
 
 //create nodes
 for (var xx = 0; xx < mapWidth; xx++)
