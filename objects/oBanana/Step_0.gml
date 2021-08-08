@@ -69,8 +69,8 @@ if (myTurn)
 			//update player's position and information
 			gridY += yMove;
 			gridX += xMove;
-			x = map[# gridX, gridY].x + sprite_width/2;
-			y = map[# gridX, gridY].y + sprite_height/2;
+			x = map[# gridX, gridY].x;
+			y = map[# gridX, gridY].y;
 		
 			//update the new node's occupant
 			map[# gridX, gridY].occupant = id;

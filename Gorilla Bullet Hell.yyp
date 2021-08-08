@@ -2,13 +2,17 @@
   "resources": [
     {"id":{"name":"sEnemyVertical","path":"sprites/sEnemyVertical/sEnemyVertical.yy",},"order":1,},
     {"id":{"name":"sEnemyHorizontal","path":"sprites/sEnemyHorizontal/sEnemyHorizontal.yy",},"order":0,},
+    {"id":{"name":"oTreeTurret","path":"objects/oTreeTurret/oTreeTurret.yy",},"order":2,},
     {"id":{"name":"sTree","path":"sprites/sTree/sTree.yy",},"order":1,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":0,},
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},"order":0,},
     {"id":{"name":"oNode","path":"objects/oNode/oNode.yy",},"order":1,},
     {"id":{"name":"MacrosAndEnums","path":"scripts/MacrosAndEnums/MacrosAndEnums.yy",},"order":0,},
+    {"id":{"name":"sTreeTurret","path":"sprites/sTreeTurret/sTreeTurret.yy",},"order":2,},
     {"id":{"name":"oMovingParent","path":"objects/oMovingParent/oMovingParent.yy",},"order":1,},
     {"id":{"name":"sWall","path":"sprites/sWall/sWall.yy",},"order":0,},
+    {"id":{"name":"sBanana","path":"sprites/sBanana/sBanana.yy",},"order":1,},
+    {"id":{"name":"Test2","path":"rooms/Test2/Test2.yy",},"order":1,},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},"order":1,},
     {"id":{"name":"oEnemyVertical","path":"objects/oEnemyVertical/oEnemyVertical.yy",},"order":0,},
     {"id":{"name":"sNode","path":"sprites/sNode/sNode.yy",},"order":0,},
@@ -20,6 +24,7 @@
     {"id":{"name":"oTerrainParent","path":"objects/oTerrainParent/oTerrainParent.yy",},"order":2,},
     {"id":{"name":"oTree","path":"objects/oTree/oTree.yy",},"order":1,},
     {"id":{"name":"oWall","path":"objects/oWall/oWall.yy",},"order":0,},
+    {"id":{"name":"oBanana","path":"objects/oBanana/oBanana.yy",},"order":1,},
     {"id":{"name":"Test","path":"rooms/Test/Test.yy",},"order":0,},
   ],
   "Options": [
@@ -36,6 +41,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"Test2","path":"rooms/Test2/Test2.yy",},},
     {"roomId":{"name":"Test","path":"rooms/Test/Test.yy",},},
   ],
   "Folders": [
