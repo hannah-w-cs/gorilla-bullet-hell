@@ -80,58 +80,55 @@ switch (state)
 					// this will avoid having instances where a bullet would collide with another, but the other runs its movement code first
 					with (oProjectileParent)
 					{
-						
+						var me = id;
 						if (gridY + yMove < 0 || gridY + yMove >= mapHeight || gridX + xMove < 0 || gridX + xMove >= mapWidth)
 							{		
 								instance_destroy();
-								break;
 							}
-							
-						var nextGrid = map[# gridX + xMove, gridY + yMove];
+						if (instance_exists(me))
+							{
+							var nextGrid = map[# gridX + xMove, gridY + yMove];
 						
-						if(!nextGrid.passable)
+							if(!nextGrid.passable)
+								{
+									instance_destroy();
+									instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+								}
+				
+							if(nextGrid.occupant != noone)
 							{
-								instance_destroy();
-								instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
-								break;
-							}
-				
-						if(nextGrid.occupant != noone)
-						{
-							switch nextGrid.occupant.type
-							{
-								case "projectile" :
-									with (nextGrid.occupant)
-									{
-										instance_destroy();
-										instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
-										break;
-									}
-									instance_destroy();
-									break;
-				
-								case "enemy" :
-									with (nextGrid.occupant)
-									{
-										instance_destroy();
-										instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
-										break;
-									}
-									instance_destroy();
-									break;
-				
-								case "player" :
-									with (nextGrid.occupant)
-									{
+								switch nextGrid.occupant.type
+								{
+									case "projectile" :
+										with (nextGrid.occupant)
+										{
+											instance_destroy();
+											instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+										}
 										instance_destroy();
 										break;
-									}
-									instance_destroy();
-									break;
 				
-								default :
-									instance_destroy();
-									break;
+									case "enemy" :
+										with (nextGrid.occupant)
+										{
+											instance_destroy();
+											instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+										}
+										instance_destroy();
+										break;
+				
+									case "player" :
+										with (nextGrid.occupant)
+										{
+											instance_destroy();
+										}
+										instance_destroy();
+										break;
+				
+									default :
+										instance_destroy();
+										break;
+								}
 							}
 						}
 						// keep this in the check to make sure there are projectile objects
