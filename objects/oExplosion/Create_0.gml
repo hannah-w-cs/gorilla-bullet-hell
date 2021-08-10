@@ -1,0 +1,1 @@
+image_speed = 10/room_speed;

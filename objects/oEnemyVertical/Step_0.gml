@@ -38,15 +38,18 @@ if (myTurn)
 		//this is the grid that this object will spawn/fire a bullet into
 		var firingGridX = gridX + bulletXDirection;
 		var firingGridY = gridY + bulletYDirection;
-		if(firingGridX >= 0 && firingGridX < mapHeight && map[# firingGridX, firingGridY].passable)
+		if(firingGridX >= 0 && firingGridX < mapHeight)
 		{
-			var bullet = instance_create_layer((firingGridX * GRID_SIZE) + sprite_width/2 , (firingGridY * GRID_SIZE) + sprite_height/2, "CharacterLayer", oSingleMoveBullet);
-			bullet.xSpeed = 1;
-			bullet.xDirection = bulletXDirection;
-			bullet.xMove = bullet.xDirection * bullet.xSpeed;
-			bullet.image_angle = bulletAngle;
-			bullet.gridX = firingGridX;
-			bullet.gridY = firingGridY;
+			if (map[# firingGridX, gridY].passable)
+			{
+				var bullet = instance_create_layer((firingGridX * GRID_SIZE) + sprite_width/2 , (firingGridY * GRID_SIZE) + sprite_height/2, "CharacterLayer", oSingleMoveBullet);
+				bullet.xSpeed = 1;
+				bullet.xDirection = bulletXDirection;
+				bullet.xMove = bullet.xDirection * bullet.xSpeed;
+				bullet.image_angle = bulletAngle;
+				bullet.gridX = firingGridX;
+				bullet.gridY = firingGridY;
+			}
 		}
 		
 		//reset firing timer

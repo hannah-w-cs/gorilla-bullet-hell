@@ -1,63 +1,63 @@
 if (myTurn)
 {
 	// if we are about to move off the map we flip around
-	if (gridY + yMove < 0 || gridY + yMove >= mapHeight || gridX + xMove < 0 || gridX + xMove >= mapWidth)
-	{		
-		instance_destroy();
-		exit;
-	}
+	//if (gridY + yMove < 0 || gridY + yMove >= mapHeight || gridX + xMove < 0 || gridX + xMove >= mapWidth)
+	//{		
+	//	instance_destroy();
+	//	exit;
+	//}
 	
 	var nextGrid = map[#gridX + xMove, gridY + yMove];
 	
-	if(!nextGrid.passable)
-	{
-		instance_destroy();
-		exit;
-	}
+	//if(!nextGrid.passable)
+	//{
+	//	instance_destroy();
+	//	exit;
+	//}
 	
-	if(nextGrid.occupant != noone)
-	{
-		switch nextGrid.occupant.type
-		{
-			case "projectile" :
-				with (nextGrid.occupant)
-				{
-					instance_destroy();
-					exit;
-					break;
-				}
-				instance_destroy();
-				exit;
-				break;
+	////if(nextGrid.occupant != noone)
+	//{
+	//	switch nextGrid.occupant.type
+	//	{
+	//		case "projectile" :
+	//			with (nextGrid.occupant)
+	//			{
+	//				instance_destroy();
+	//				exit;
+	//				break;
+	//			}
+	//			instance_destroy();
+	//			exit;
+	//			break;
 				
-			case "enemy" :
-				with (nextGrid.occupant)
-				{
-					instance_destroy();
-					exit;
-					break;
-				}
-				instance_destroy();
-				exit;
-				break;
+	//		case "enemy" :
+	//			with (nextGrid.occupant)
+	//			{
+	//				instance_destroy();
+	//				exit;
+	//				break;
+	//			}
+	//			instance_destroy();
+	//			exit;
+	//			break;
 				
-			case "player" :
-				with (nextGrid.occupant)
-				{
-					instance_destroy();
-					exit;
-					break;
-				}
-				instance_destroy();
-				exit;
-				break;
+	//		case "player" :
+	//			with (nextGrid.occupant)
+	//			{
+	//				instance_destroy();
+	//				exit;
+	//				break;
+	//			}
+	//			instance_destroy();
+	//			exit;
+	//			break;
 				
-			default :
-				instance_destroy();
-				exit;
-				break;
-		}
-	}
+	//		default :
+	//			instance_destroy();
+	//			exit;
+	//			break;
+	//	}
+	//}
 	
 	if (gridY + yMove >= 0 && gridY + yMove < mapHeight && gridX + xMove >=0 && gridX + xMove < mapWidth)
 	{

@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sEnemyHorizontal",
-    "path": "sprites/sEnemyHorizontal/sEnemyHorizontal.yy",
+    "name": "sEnemyHorizontal1Down",
+    "path": "sprites/sEnemyHorizontal1Down/sEnemyHorizontal1Down.yy",
   },
   "solid": false,
   "visible": true,

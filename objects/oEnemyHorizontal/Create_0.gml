@@ -22,16 +22,17 @@ myFacing = choose("up", "down");
 //adjust sprite accordingly AND which way the projectile is fired
 if (myFacing == "up")
 {
-	//add sprite index changes here
+	sprite_index = sEnemyHorizontal1Up;
 	bulletYDirection = -1;
 	bulletAngle = 90;
 }
 else
 {
-	//sprite index goes here
+	sprite_index = sEnemyHorizontal1Down;
 	bulletYDirection = 1;
 	bulletAngle = 270;
 }
+image_speed = 5/room_speed;
 
 
 

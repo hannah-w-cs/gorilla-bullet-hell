@@ -21,16 +21,18 @@ myFacing = choose("left", "right");
 //adjust sprite accordingly AND which way the projectile is fired
 if (myFacing == "right")
 {
-	//add sprite index changes here
+	sprite_index = sEnemyVertical1Right;
 	bulletXDirection = 1;
 	bulletAngle = 0;
 }
 else
 {
-	//sprite index goes here
+	sprite_index = sEnemyVertical1Left;
 	bulletXDirection = -1;
 	bulletAngle = 180;
 }
+
+image_speed = 5/room_speed;
 
 // set enemy type for interaction with other objects
 type = "enemy";

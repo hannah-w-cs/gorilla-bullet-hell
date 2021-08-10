@@ -75,8 +75,69 @@ switch (state)
 			case TURN_STATE.projectile :
 			
 				if (instance_exists(oProjectileParent))
-				{
-					oProjectileParent.myTurn = true;
+				{	
+					//run projectile collision code here so that it runs collisions for all projectiles before they move.
+					// this will avoid having instances where a bullet would collide with another, but the other runs its movement code first
+					with (oProjectileParent)
+					{
+						
+						if (gridY + yMove < 0 || gridY + yMove >= mapHeight || gridX + xMove < 0 || gridX + xMove >= mapWidth)
+							{		
+								instance_destroy();
+								break;
+							}
+							
+						var nextGrid = map[# gridX + xMove, gridY + yMove];
+						
+						if(!nextGrid.passable)
+							{
+								instance_destroy();
+								instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+								break;
+							}
+				
+						if(nextGrid.occupant != noone)
+						{
+							switch nextGrid.occupant.type
+							{
+								case "projectile" :
+									with (nextGrid.occupant)
+									{
+										instance_destroy();
+										instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+										break;
+									}
+									instance_destroy();
+									break;
+				
+								case "enemy" :
+									with (nextGrid.occupant)
+									{
+										instance_destroy();
+										instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+										break;
+									}
+									instance_destroy();
+									break;
+				
+								case "player" :
+									with (nextGrid.occupant)
+									{
+										instance_destroy();
+										break;
+									}
+									instance_destroy();
+									break;
+				
+								default :
+									instance_destroy();
+									break;
+							}
+						}
+						// keep this in the check to make sure there are projectile objects
+						oProjectileParent.myTurn = true;
+					}
+					
 					gameTurn = TURN_STATE.waitProjectile;
 				}
 				else
