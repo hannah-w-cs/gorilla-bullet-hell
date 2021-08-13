@@ -1,0 +1,1 @@
+map[# gridX, gridY].occupant = noone;

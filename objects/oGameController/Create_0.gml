@@ -14,6 +14,9 @@ gameTurn = TURN_STATE.player;
 alarmSet = false;
 turnWaitTime = 0.5; //this is how long in seconds after a turn occurs that another turn happens
 
+// this will help us make sure our tile sprites alternate
+tile = 0;
+
 //create nodes
 for (var xx = 0; xx < mapWidth; xx++)
 {
@@ -29,9 +32,32 @@ for (var xx = 0; xx < mapWidth; xx++)
 //populate neighbor lists on nodes
 for(var xx = 0; xx < mapWidth; xx++)
 {
+	if (tile == 1)
+	{
+		tile = 0;
+	}
+	else if (tile == 0)
+	{
+		tile = 1;
+	}
+	
 	for (var yy = 0; yy < mapHeight; yy++)
 	{
 		var node = map[# xx, yy];
+		
+		//alternate node sprites
+		with (node)
+		{
+			//make sure the tile sprite is correct
+			image_index = other.tile;
+		}
+		
+		tile++;
+		if (tile > 1)
+		{
+			tile = 0;
+		}
+		
 		// we are adding neighbors based on the knowledge that they will have neighbors in directions the room exists in
 		//add left neighbor
 		if (xx > 0) 

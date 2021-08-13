@@ -8,6 +8,8 @@ switch (state)
 	// Doing all of this here so that this is done with each of the nodes after the terrain objects are created
 		with (oNode)
 		{
+
+
 				if (instance_position(x + sprite_width/2, y + sprite_height/2, oTerrainParent))
 			{
 				var tempTerrain = instance_position(x + sprite_width/2, y + sprite_height/2, oTerrainParent);
@@ -16,22 +18,15 @@ switch (state)
 					{
 						case "wall" : 
 							type = "wall";
-							sprite_index = sWall;
 							passable = false;
 			
 							break;
 			
 						case "tree" :
 							type = "tree";
-							sprite_index = sTree;
 							passable = false;
 			
 							break;
-					}
-	
-					with (tempTerrain)
-					{
-						instance_destroy();
 					}
 			}
 			
@@ -45,6 +40,7 @@ switch (state)
 			}
 			
 		}
+		
 		state = "PlayingGame";
 		break;
 		
@@ -55,8 +51,15 @@ switch (state)
 		{
 			
 			case TURN_STATE.player :
-				oPlayer.myTurn = true;
-				gameTurn = TURN_STATE.waitPlayer;
+				if (instance_exists(oPlayer))
+				{
+					oPlayer.myTurn = true;
+					gameTurn = TURN_STATE.waitPlayer;
+				}
+				else
+				{
+					game_end();
+				}
 				
 				break;
 			
@@ -124,6 +127,15 @@ switch (state)
 										}
 										instance_destroy();
 										break;
+										
+									case "mine" :
+										with (nextGrid.occupant)
+										{
+											instance_destroy();
+											instance_create_layer(gridX * GRID_SIZE, gridY * GRID_SIZE, "CharacterLayer", oExplosion);
+										}
+										instance_destroy();
+										break;
 				
 									default :
 										instance_destroy();
@@ -168,6 +180,18 @@ switch (state)
 				{
 					oEnemyParent.myTurn = true;
 					gameTurn = TURN_STATE.waitEnemy;
+					//sound effect if something happens on screen by making a box with it's points and checking for collision within it
+					var cam = view_camera[0];
+					var x1 = camera_get_view_x(cam);
+					var y1 = camera_get_view_y(cam);
+					var x2 = x1 + camera_get_view_width(cam);
+					var y2 = y1 + camera_get_view_height(cam);
+					if (collision_rectangle(x1,y1,x2,y2,oSoldierParent,false,true))
+					{
+						var stepSound = choose(soldierStepsGrass_001,soldierStepsGrass_002,soldierStepsGrass_003,soldierStepsGrass_004,soldierStepsGrass_005,soldierStepsGrass_006);
+						audio_play_sound(stepSound,1,false);
+					}
+					
 				}
 				else
 				{

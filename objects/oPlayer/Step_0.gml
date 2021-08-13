@@ -28,6 +28,35 @@ if(hsp != 0 && gridX + hsp >= 0 && gridX + hsp < mapWidth && myTurn)
 		//mark that it is no longer the player's turn
 		myTurn = false;
 	}
+	else if (map[# gridX + hsp, gridY].occupant != noone)
+	{
+		switch map[# gridX + hsp, gridY].occupant
+		{
+			case "mine" :
+				//move onto the mine because the player goofed
+				map[# gridX, gridY].occupant = noone;
+		
+				//update player's position and information
+				gridX += hsp;
+				x = map[# gridX, gridY].x;
+				y = map[# gridX, gridY].y;
+		
+				//update the new node's occupant
+				map[# gridX, gridY].occupant = id;
+		
+				//mark that it is no longer the player's turn
+				myTurn = false;
+				
+				break;
+				
+			default :
+			
+				break;
+		}
+	}
+		// play the sfx
+	var stepSound = choose(gorillaStepsGrass_001,gorillaStepsGrass_002,gorillaStepsGrass_003,gorillaStepsGrass_004,gorillaStepsGrass_005,gorillaStepsGrass_006);
+	audio_play_sound(stepSound, 1, false);
 }
 
 //vertical movement
@@ -49,4 +78,37 @@ if(vsp != 0 && gridY + vsp >= 0 && gridY + vsp < mapHeight && myTurn)
 		//mark that it is no longer the player's turn
 		myTurn = false;
 	}
+	else if (map[# gridX, gridY + vsp].occupant != noone)
+	{
+		switch map[# gridX, gridY + vsp].occupant
+		{
+		
+			case "mine" :
+				
+				//move onto the mine because the player goofed
+				map[# gridX, gridY].occupant = noone;
+		
+				//update player's position and information
+				gridY += vsp;
+				x = map[# gridX, gridY].x;
+				y = map[# gridX, gridY].y;
+		
+				//update the new node's occupant, the mine is going to explode on its turn so this is okay to update
+				map[# gridX, gridY].occupant = id;
+		
+				//mark that it is no longer the player's turn
+				myTurn = false;
+				
+				break;
+				
+			default :
+				
+				break;
+		}
+	}
+	
+	// play the sfx
+	var stepSound = choose(gorillaStepsGrass_001,gorillaStepsGrass_002,gorillaStepsGrass_003,gorillaStepsGrass_004,gorillaStepsGrass_005,gorillaStepsGrass_006);
+	audio_play_sound(stepSound, 1, false);
+	
 }

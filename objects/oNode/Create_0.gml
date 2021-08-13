@@ -9,3 +9,4 @@ gridY = 0;
 
 type = "node"; //node will stand for basic open square
 
+image_speed = 0;
